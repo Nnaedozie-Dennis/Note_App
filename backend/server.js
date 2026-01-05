@@ -8,6 +8,7 @@ const mongoose = require("mongoose"); // ODM for MongoDB - makes database work e
 const dotenv = require("dotenv"); // Loads environment variables from .env file
 const cors = require("cors"); // Allows frontend (localhost:3000) to talk to backend
 const authRoutes = require("./routes/authRoutes");
+const noteRoutes = require("./routes/noteRoutes");
 
 // Load environment variables from .env file
 // This gives us access to PORT, MONGO_URI, JWT_SECRET
@@ -28,6 +29,9 @@ app.use(express.json()); // Parse incoming JSON requests (e.g., from login/regis
 
 // Mount auth routes
 app.use('/api/auth', authRoutes);
+
+// Mount note routes
+app.use('/api/notes', noteRoutes);
 
 // Temporary test route - visit http://localhost:5000/ to see this message
 app.get("/", (req, res) => {
