@@ -82,3 +82,25 @@ exports.deleteNote = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+
+// GET single note by ID (for edit page)
+exports.getSingleNote = async (req, res) => {
+  try {
+    const note = await Note.findById(req.params.id);
+
+    if (!note) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+
+    // Check if note belongs to logged-in user
+    if (note.user.toString() !== req.user._id.toString()) {
+      return res.status(401).json({ message: "Not authorized" });
+    }
+
+    res.json(note);
+  } catch (error) {
+    console.error("Get single note error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
