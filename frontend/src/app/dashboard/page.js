@@ -52,7 +52,7 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
+      <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
         <p className="text-2xl text-gray-700">Loading your notes...</p>
       </div>
     );
@@ -76,7 +76,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-md shadow-md">
         <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
@@ -93,7 +93,7 @@ export default function Dashboard() {
           <div className="text-center mb-12">
             <button
               onClick={() => router.push("/notes/new")}
-              className="px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-2xl font-bold rounded-2xl shadow-2xl hover:shadow-indigo-500/50 transform hover:scale-105 transition duration-300"
+              className="px-10 py-5 bg-linear-to-r from-indigo-600 to-purple-600 text-white text-2xl font-bold rounded-2xl shadow-2xl hover:shadow-indigo-500/50 transform hover:scale-105 transition duration-300"
             >
               + Create New Note
             </button>
@@ -110,7 +110,7 @@ export default function Dashboard() {
             </p>
             <button
               onClick={() => router.push("/notes/new")}
-              className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition"
+              className="px-8 py-4 bg-linear-to-r from-indigo-600 to-purple-600 text-white text-xl font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition"
             >
               Create Your First Note
             </button>
