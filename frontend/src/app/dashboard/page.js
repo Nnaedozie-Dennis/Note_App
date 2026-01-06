@@ -82,27 +82,40 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
           <h1 className="text-3xl font-bold text-gray-900">My Notes</h1>
           <div className="flex items-center gap-6">
-            <p className="text-lg text-gray-700">Hello, {userName}!</p>
+            {/* <p className="text-lg text-gray-700">Hello, {userName}!</p> */}
             <button
               onClick={handleLogout}
-              className="px-6 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 transition shadow-lg"
+              className="px-4 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 transition shadow-lg cursor-pointer"
             >
               Logout
             </button>
           </div>
-          <div className="text-center mb-12">
+          {/* <div className="text-center mb-12">
             <button
               onClick={() => router.push("/notes/new")}
               className="px-10 py-5 bg-linear-to-r from-indigo-600 to-purple-600 text-white text-2xl font-bold rounded-2xl shadow-2xl hover:shadow-indigo-500/50 transform hover:scale-105 transition duration-300"
             >
               + Create New Note
             </button>
-          </div>
+          </div> */}
         </div>
       </header>
 
-      {/* Notes Grid */}
       <div className="max-w-7xl mx-auto p-8">
+        {/* Main Content */}
+        {/* New Note Button */}
+        <div className="mb-8 flex justify-between items-center">
+          {/* <h2 className="text-3xl font-bold text-gray-800">Your Notes</h2> */}
+          <p className="text-3xl font-bold text-gray-800">{userName} Notes</p>
+          <button
+            onClick={() => router.push("/notes/new")}
+            className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition shadow-md cursor-pointer"
+          >
+            + New Note
+          </button>
+        </div>
+
+        {/* Notes Grid */}
         {notes.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-2xl text-gray-600 mb-8">
@@ -116,46 +129,72 @@ export default function Dashboard() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {notes.map((note) => (
               <div
                 key={note._id}
-                className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition transform hover:-translate-y-2 relative"
+                className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition transform hover:-translate-y-2 relative flex flex-col h-80 max-h-80 border-2 border-violet-500 cursor-pointer"
               >
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {note.title}
                 </h3>
-                <p className="text-gray-700 mb-6 line-clamp-4">
+                <p className="text-gray-700 mb-5 line-clamp-4 grow">
                   {note.content}
                 </p>
                 {/* Tags - show as nice pill badges */}
                 {note.tags && note.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-6 ">
                     {note.tags.map((tag, index) => (
                       <span
                         key={index}
-                        className="px-4 py-2 bg-indigo-100 text-indigo-700 text-sm font-medium rounded-full"
+                        className="px-4 py-2 bg-indigo-100 text-indigo-700 text-sm font-medium rounded-full "
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 )}
-                <div className="text-sm text-gray-500 mb-6">
+
+                {/* <div className="text-sm text-gray-500 mb-6">
                   Created: {new Date(note.createdAt).toLocaleDateString()}
+                </div> */}
+
+                <div className="text-xs text-gray-500 mt-auto ">
+                  <p>
+                    Created:{" "}
+                    {new Date(note.createdAt).toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </p>
+                  {note.createdAt !== note.updatedAt && (
+                    <p>
+                      Updated:{" "}
+                      {new Date(note.updatedAt).toLocaleString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </p>
+                  )}
                 </div>
 
                 {/* Action buttons */}
-                <div className="absolute top-6 right-6 flex gap-4">
+                <div className="absolute bottom-9 right-6 flex gap-4 ">
                   <button
                     onClick={() => router.push(`/notes/${note._id}/edit`)}
-                    className="text-indigo-600 hover:text-indigo-800 font-medium"
+                    className="text-indigo-600 hover:text-indigo-800 font-medium cursor-pointer"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(note._id)}
-                    className="text-red-600 hover:text-red-800 font-medium"
+                    className="text-red-600 hover:text-red-800 font-medium cursor-pointer"
                   >
                     Delete
                   </button>

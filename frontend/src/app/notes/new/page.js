@@ -46,9 +46,9 @@ export default function NewNote() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-bold text-gray-900 mb-10 text-center">
+    <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50 py-12 px-4">
+      <div className="max-w-2xl mx-auto">
+        <h1 className="text-5xl font-bold text-gray-900 mb-8 text-center">
           Create New Note
         </h1>
 
@@ -57,42 +57,38 @@ export default function NewNote() {
           className="bg-white rounded-3xl shadow-2xl p-10 space-y-8"
         >
           <div>
-            <label className="block text-lg font-medium text-gray-700 mb-3">
-              Title
-            </label>
+            <label className="note-title">Title</label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
-              className="w-full px-6 py-4 text-lg border border-gray-300 rounded-2xl focus:ring-4 focus:ring-indigo-500 focus:border-transparent"
+              className="note-content note-content:focus"
               placeholder="Give your note a great title..."
             />
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700 mb-3">
-              Content
-            </label>
+            <label className="note-title">Content</label>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
               required
-              rows="12"
-              className="w-full px-6 py-4 text-lg border border-gray-300 rounded-2xl focus:ring-4 focus:ring-indigo-500 focus:border-transparent resize-none"
+              rows="6"
+              className="note-content note-content:focus"
               placeholder="Write your thoughts here..."
             />
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700 mb-3">
+            <label className="note-title">
               Tags (optional, comma-separated)
             </label>
             <input
               type="text"
               value={tags}
               onChange={(e) => setTags(e.target.value)}
-              className="w-full px-6 py-4 text-lg border border-gray-300 rounded-2xl focus:ring-4 focus:ring-indigo-500 focus:border-transparent"
+              className="note-content note-content:focus"
               placeholder="work, personal, ideas"
             />
           </div>
@@ -101,14 +97,14 @@ export default function NewNote() {
             <button
               type="submit"
               disabled={loading}
-              className="px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xl font-bold rounded-2xl shadow-2xl hover:shadow-indigo-500/50 transform hover:scale-105 transition duration-300 disabled:opacity-70"
+              className="submit-btn submit-btn:hover submit-btn:disabled"
             >
               {loading ? "Saving..." : "Save Note"}
             </button>
             <button
               type="button"
               onClick={() => router.push("/dashboard")}
-              className="px-10 py-5 bg-gray-300 text-gray-800 text-xl font-bold rounded-2xl hover:bg-gray-400 transition shadow-lg"
+              className="cancel-btn cancel-btn:hover"
             >
               Cancel
             </button>
