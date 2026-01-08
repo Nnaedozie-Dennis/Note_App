@@ -20,8 +20,9 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000", // Local development
-      "//https://note-app-six-beryl.vercel.app/", // Your live frontend URL
+      "https://note-app-six-beryl.vercel.app", // Your live frontend URL
     ],
+    credentials: true,
   })
 );
 
