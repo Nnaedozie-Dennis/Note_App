@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -22,9 +21,12 @@ export default function Dashboard() {
 
     const fetchNotes = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/notes", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          "https://note-app-k88k.onrender.com/api/notes",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setNotes(res.data);
         setUserName(localStorage.getItem("userName") || "User");
       } catch (err) {
@@ -50,8 +52,10 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-        <div className="min-h-screen bg-linear-to-br from-indigo-50 to-indigo-100 flex items-center justify-center">
-        <p className="text-xl sm:text-2xl text-gray-700">Loading your notes...</p>
+      <div className="min-h-screen bg-linear-to-br from-indigo-50 to-indigo-100 flex items-center justify-center">
+        <p className="text-xl sm:text-2xl text-gray-700">
+          Loading your notes...
+        </p>
       </div>
     );
   }
@@ -61,9 +65,12 @@ export default function Dashboard() {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/notes/${noteId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://note-app-k88k.onrender.com/api/notes/${noteId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       setNotes(notes.filter((n) => n._id !== noteId));
     } catch (err) {
@@ -129,7 +136,6 @@ export default function Dashboard() {
                   {note.content}
                 </p>
 
-
                 {note.tags && note.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4 sm:mb-6 ">
                     {note.tags.map((tag, index) => (
@@ -167,7 +173,6 @@ export default function Dashboard() {
                     </p>
                   )}
                 </div>
-
 
                 <div className="absolute bottom-6 sm:bottom-9 right-4 sm:right-6 flex gap-2 sm:gap-3 ">
                   <button

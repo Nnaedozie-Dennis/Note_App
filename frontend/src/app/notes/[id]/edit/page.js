@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -18,9 +17,12 @@ export default function EditNote() {
     const fetchNote = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:5000/api/notes/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          `https://note-app-k88k.onrender.com/api/notes/${id}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
         const note = res.data;
         setTitle(note.title);
@@ -29,7 +31,7 @@ export default function EditNote() {
       } catch (err) {
         alert("Note not found or unauthorized");
         router.push("/dashboard");
-      } 
+      }
       // finally {
       //   setFetching(false);
       // }
@@ -45,7 +47,7 @@ export default function EditNote() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:5000/api/notes/${id}`,
+        `https://note-app-k88k.onrender.com/api/notes/${id}`,
         {
           title,
           content,
@@ -63,7 +65,7 @@ export default function EditNote() {
     } catch (err) {
       alert("Error updating note");
       console.error(err);
-    } 
+    }
     // finally {
     //   setLoading(false);
     // }
@@ -86,7 +88,6 @@ export default function EditNote() {
           onSubmit={handleSubmit}
           className="bg-white rounded-xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-6 sm:p-10 space-y-6 sm:space-y-8"
         >
-
           <div>
             <label className="note-title">Title</label>
             <input

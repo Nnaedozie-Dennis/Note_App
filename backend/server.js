@@ -1,6 +1,4 @@
-// backend/server.js
-// Main entry point for our Express server
-// This file sets up the server, connects to MongoDB, and mounts all routes
+
 
 // Import required packages
 const express = require("express"); // Web framework for Node.js
@@ -28,12 +26,12 @@ app.use(
 app.use(express.json()); // Parse incoming JSON requests (e.g., from login/register forms)
 
 // Mount auth routes
-app.use('/api/auth', authRoutes);
+app.use("/api/auth", authRoutes);
 
 // Mount note routes
-app.use('/api/notes', noteRoutes);
+app.use("/api/notes", noteRoutes);
 
-// Temporary test route - visit http://localhost:5000/ to see this message
+// Temporary test route - visit https://note-app-k88k.onrender.com/ to see this message
 app.get("/", (req, res) => {
   res.send("Note App Backend is running! 🎉");
 });

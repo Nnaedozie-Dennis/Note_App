@@ -28,10 +28,9 @@ export default function Register() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://note-app-k88k.onrender.com/api/auth/register",
         formData
       );
-
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userName", res.data.user.name);

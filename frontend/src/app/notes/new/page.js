@@ -18,7 +18,7 @@ export default function NewNote() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/notes",
+        "https://note-app-k88k.onrender.com/api/notes",
         {
           title,
           content,

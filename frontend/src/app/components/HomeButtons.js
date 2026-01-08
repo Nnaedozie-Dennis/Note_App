@@ -7,9 +7,12 @@ export default function HomeButtons() {
 
   const handleDemoLogin = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/demo", {
-        method: "POST",
-      });
+      const res = await fetch(
+        "https://note-app-k88k.onrender.com/api/auth/demo",
+        {
+          method: "POST",
+        }
+      );
       const data = await res.json();
 
       if (data.token) {
@@ -27,15 +30,12 @@ export default function HomeButtons() {
 
   return (
     <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center w-full">
-  
       <button
         onClick={handleDemoLogin}
-
         className="w-full sm:w-auto px-6 sm:px-10 py-3 bg-linear-to-r from-indigo-600 to-indigo-800 text-white sm:py-5 text-lg sm:text-xl font-bold rounded-xl sm:rounded-2xl shadow-2xl hover:shadow-white/30 transform hover:scale-105 transition duration-300 cursor-pointer"
       >
         Try Demo Now →
       </button>
-
 
       <button
         onClick={() => router.push("/register")}
