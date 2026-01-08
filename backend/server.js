@@ -16,13 +16,6 @@ dotenv.config();
 const app = express();
 
 // Middleware - functions that run on every request
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // Allow only our frontend to access backend
-//     // Later, when deploying, we'll change this to your live frontend URL
-//   })
-// );
-
 app.use(
   cors({
     origin: [
