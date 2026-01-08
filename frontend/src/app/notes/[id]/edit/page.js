@@ -1,5 +1,3 @@
-// src/app/notes/[id]/edit/page.js
-// Edit existing note - loads current data, updates on save
 
 "use client";
 
@@ -12,7 +10,7 @@ export default function EditNote() {
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
   const [loading, setLoading] = useState(false);
-  const [fetching, setFetching] = useState(true);
+  // const [fetching, setFetching] = useState(true);
   const router = useRouter();
   const { id } = useParams();
 
@@ -31,9 +29,10 @@ export default function EditNote() {
       } catch (err) {
         alert("Note not found or unauthorized");
         router.push("/dashboard");
-      } finally {
-        setFetching(false);
-      }
+      } 
+      // finally {
+      //   setFetching(false);
+      // }
     };
 
     if (id) fetchNote();
@@ -64,26 +63,30 @@ export default function EditNote() {
     } catch (err) {
       alert("Error updating note");
       console.error(err);
-    } finally {
-      setLoading(false);
-    }
+    } 
+    // finally {
+    //   setLoading(false);
+    // }
   };
 
-  if (fetching)
-    return <div className="loading-screen">Loading note...</div>;
+  // if (fetching)
+  //   return
+  //  <div className="min-h-screen bg-linear-to-br from-indigo-50 to-indigo-100 flex items-center justify-center">
+  //    <p className="text-xl sm:text-2xl text-gray-700">Loading your notes...</p>
+  //  </div>;
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-indigo-50 via-white to-purple-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-100 py-8 sm:py-12 px-4">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-5xl font-bold text-gray-900 mb-10 text-center">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8 sm:mb-10 text-center">
           Edit Note
         </h1>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white rounded-3xl shadow-2xl p-10 space-y-8"
+          className="bg-white rounded-xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-6 sm:p-10 space-y-6 sm:space-y-8"
         >
-          {/* Same form fields as create, just pre-filled */}
+
           <div>
             <label className="note-title">Title</label>
             <input
@@ -116,18 +119,18 @@ export default function EditNote() {
             />
           </div>
 
-          <div className="flex gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
             <button
               type="submit"
               disabled={loading}
-              className="submit-btn submit-btn:hover submit-btn:disabled"
+              className="submit-btn submit-btn:hover submit-btn:disabled w-full sm:w-auto"
             >
               {loading ? "Saving..." : "Update Note"}
             </button>
             <button
               type="button"
               onClick={() => router.push("/dashboard")}
-              className="cancel-btn cancel-btn:hover"
+              className="cancel-btn cancel-btn:hover w-full sm:w-auto"
             >
               Cancel
             </button>

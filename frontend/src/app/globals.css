@@ -1,10 +1,4 @@
 @import "tailwindcss";
-
-/* @tailwind base; */
-/* @tailwind components; */
-/* @tailwind utilities; */
-
-/* Optional: smooth transitions for dark mode later */
 html {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -50,7 +44,6 @@ body {
 }
 
 .note-title{
-  /* block text-lg font-medium text-gray-700 mb-3 */
   display: block;
   font-size: 1.12rem;
   font-weight: 500;
@@ -60,64 +53,86 @@ body {
 
 .note-content {
   width: 100%;
-  padding: 16px 24px;
-  font-size: 1.12rem;
+  padding: 12px 16px;
+  font-size: 1rem;
   color: #101828;
   border: 1px solid #d1d5dc;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   outline: none;
 }
 
 .note-content:focus {
-  border-color: oklch(58.5% 0.233 277.117);
+  border-color: #615fff;
+  /* box-shadow: 0 0 0 3px #615fff; */
+}
+
+@media (min-width: 640px) {
+  .note-content {
+    padding: 16px 24px;
+    font-size: 1.125rem;
+    border-radius: 1rem;
+  }
 }
 
 .submit-btn {
-  padding: 20px 40px; /* py-5 px-10 */
-  background: linear-gradient(to right, #4f46e5, #9333ea); /* indigo-600 → purple-600 */
+  padding: 16px 32px; 
+  background: linear-gradient(to right, #615fff, #459ddb); 
   color: #ffffff;
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 700; /* font-bold */
-  border-radius: 1rem; /* rounded-2xl */
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+  font-size: 1.125rem; 
+  font-weight: 700; 
+  border-radius: 0.75rem; 
   transition: transform 300ms ease, box-shadow 300ms ease;
   cursor: pointer;
+  border: none;
 }
 
-/* Hover effects */
+
 .submit-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.5); /* indigo-500/50 */
+  box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.5); 
 }
 
-/* Disabled state */
+
 .submit-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
 
 
+@media (max-width: 640px) {
+  .submit-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+
 .cancel-btn {
-  padding: 20px 40px; /* py-5 px-10 */
-  background-color: #d1d5db; /* gray-300 */
-  color: #1f2937; /* gray-800 */
-  font-size: 1.25rem; /* text-xl */
-  font-weight: 700; /* font-bold */
-  border-radius: 1rem; /* rounded-2xl */
+  padding: 16px 32px; 
+  background-color: #e5e7eb; 
+  color: #374151; 
+  font-size: 1.125rem;
+  font-weight: 700; 
+  border-radius: 1rem; 
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-              0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+              0 4px 6px -2px rgba(0, 0, 0, 0.05); 
   transition: background-color 150ms ease, box-shadow 150ms ease;
   cursor: pointer;
+  border: none;
 }
 
-/* Hover state */
+
 .cancel-btn:hover {
-  background-color: #9ca3af; /* gray-400 */
+  background-color: #d1d5db; 
 }
 
-.pattern-bg {
-  background-image: url('/patterns/dots-pattern.svg');
-  background-repeat: repeat;
+
+@media (max-width: 640px) {
+  .cancel-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
 }
+
 
 

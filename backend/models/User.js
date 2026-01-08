@@ -8,24 +8,24 @@ const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true, // Name is mandatory
-      trim: true, // Removes extra spaces
+      required: true, 
+      trim: true, 
     },
     email: {
       type: String,
       required: true,
-      unique: true, // No two users can have same email
-      lowercase: true, // Saves email as lowercase
+      unique: true, 
+      lowercase: true, 
       trim: true,
     },
     password: {
       type: String,
       required: true,
-      minlength: 6, // Password must be at least 6 characters
+      minlength: 6, 
     },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
+    timestamps: true, 
   }
 );
 

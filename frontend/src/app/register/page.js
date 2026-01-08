@@ -1,7 +1,3 @@
-// src/app/register/page.js
-// Register page - allows new users to create an account
-// Connects to backend /api/auth/register
-
 "use client";
 
 import { useState } from "react";
@@ -36,7 +32,7 @@ export default function Register() {
         formData
       );
 
-      // Save token and user name, then redirect to dashboard
+
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userName", res.data.user.name);
       router.push("/dashboard");
@@ -48,11 +44,9 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center py-12 px-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-8">
-          Create Your Account
-        </h2>
+    <div className="min-h-screen bg-linear-to-br from-indigo-50 to-indigo-300 flex items-center justify-center py-8 sm:py-12 px-4">
+      <div className="max-w-md w-full bg-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-6 sm:mb-8"></h2>
 
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
@@ -71,7 +65,7 @@ export default function Register() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 text-gray-700 rounded-lg sm:rounded-xl focus:ring-1 focus:ring-indigo-500 outline-none"
             />
           </div>
 
@@ -85,7 +79,7 @@ export default function Register() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-indigo-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 text-gray-700 rounded-lg sm:rounded-xl focus:ring-1 focus:ring-indigo-500 outline-none"
             />
           </div>
 
@@ -101,12 +95,12 @@ export default function Register() {
                 onChange={handleChange}
                 required
                 minLength="6"
-                className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl focus:ring-4 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 text-gray-700 rounded-lg sm:rounded-xl focus:ring-1 focus:ring-indigo-500 outline-none"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 cursor-pointer"
               >
                 {showPassword ? (
                   <EyeSlashIcon className="h-5 w-5" />
@@ -120,13 +114,13 @@ export default function Register() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 disabled:opacity-70"
+            className="w-full py-3 sm:py-4 bg-linear-to-r from-indigo-600 to-indigo-400 text-white font-bold rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 disabled:opacity-70 cursor-pointer"
           >
             {loading ? "Creating Account..." : "Sign Up"}
           </button>
         </form>
 
-        <p className="text-center mt-8 text-gray-600">
+        <p className="text-center mt-6 sm:mt-8 text-gray-600 text-sm sm:text-base">
           Already have an account?{" "}
           <Link
             href="/login"

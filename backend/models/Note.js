@@ -22,12 +22,12 @@ const NoteSchema = new mongoose.Schema(
     ],
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // Links note to its owner (the user who created it)
+      ref: "User", 
       required: true,
     },
   },
   {
-    timestamps: true, // Adds createdAt and updatedAt automatically
+    timestamps: true, 
   }
 );
 
